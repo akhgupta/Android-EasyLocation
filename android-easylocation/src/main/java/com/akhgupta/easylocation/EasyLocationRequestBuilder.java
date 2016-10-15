@@ -1,0 +1,64 @@
+package com.akhgupta.easylocation;
+
+import com.google.android.gms.location.LocationRequest;
+
+public class EasyLocationRequestBuilder {
+    private LocationRequest locationRequest;
+    private String locationSettingsDialogTitle;
+    private String locationSettingsDialogMessage;
+    private String locationSettingsDialogPositiveButtonText;
+    private String locationSettingsDialogNegativeButtonText;
+    private String locationPermissionDialogTitle;
+    private String locationPermissionDialogMessage;
+    private String locationPermissionDialogPositiveButtonText;
+    private String locationPermissionDialogNegativeButtonText;
+
+    public EasyLocationRequestBuilder setLocationRequest(LocationRequest locationRequest) {
+        this.locationRequest = locationRequest;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationSettingsDialogTitle(String locationSettingsDialogTitle) {
+        this.locationSettingsDialogTitle = locationSettingsDialogTitle;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationSettingsDialogMessage(String locationSettingsDialogMessage) {
+        this.locationSettingsDialogMessage = locationSettingsDialogMessage;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationSettingsDialogPositiveButtonText(String locationSettingsDialogPositiveButtonText) {
+        this.locationSettingsDialogPositiveButtonText = locationSettingsDialogPositiveButtonText;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationSettingsDialogNegativeButtonText(String locationSettingsDialogNegativeButtonText) {
+        this.locationSettingsDialogNegativeButtonText = locationSettingsDialogNegativeButtonText;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationPermissionDialogTitle(String locationPermissionDialogTitle) {
+        this.locationPermissionDialogTitle = locationPermissionDialogTitle;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationPermissionDialogMessage(String locationPermissionDialogMessage) {
+        this.locationPermissionDialogMessage = locationPermissionDialogMessage;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationPermissionDialogPositiveButtonText(String locationPermissionDialogPositiveButtonText) {
+        this.locationPermissionDialogPositiveButtonText = locationPermissionDialogPositiveButtonText;
+        return this;
+    }
+
+    public EasyLocationRequestBuilder setLocationPermissionDialogNegativeButtonText(String locationPermissionDialogNegativeButtonText) {
+        this.locationPermissionDialogNegativeButtonText = locationPermissionDialogNegativeButtonText;
+        return this;
+    }
+
+    public EasyLocationRequest build() {
+        return new EasyLocationRequest(locationRequest, locationSettingsDialogTitle, locationSettingsDialogMessage, locationSettingsDialogPositiveButtonText, locationSettingsDialogNegativeButtonText, locationPermissionDialogTitle, locationPermissionDialogMessage, locationPermissionDialogPositiveButtonText, locationPermissionDialogNegativeButtonText);
+    }
+}
