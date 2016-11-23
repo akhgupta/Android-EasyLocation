@@ -1,13 +1,13 @@
 package com.akhgupta.easylocation;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 
 
-public abstract class EasyLocationAppCompatActivity extends Activity implements EasyLocationListener {
+public abstract class EasyLocationAppCompatActivity extends AppCompatActivity implements EasyLocationListener {
     private EasyLocationDelegate easyLocationDelegate;
 
     protected Location getLastKnownLocation() {
