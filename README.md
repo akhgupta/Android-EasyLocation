@@ -7,6 +7,7 @@ Getting location updates requires lots of bolierplate code in Android, You need 
 - Handling Location permission scenarios
 - Checking Location services are On or Off
 - Getting lastknown location is not so easy either
+- Fallback to last known location if not getting location after certain duration
 
 **Android-EasyLocation** does all this stuff in background, so that you can concentrate on your business logic than handling all above
 
@@ -14,9 +15,14 @@ Getting location updates requires lots of bolierplate code in Android, You need 
 
 In your `build.gradle`:
 
+**com.google.android.gms:play-services-location** dependency also needs to be added like this
+
+**x.x.x** can be replaced with google play service version your app is using [versions information available here](https://developers.google.com/android/guides/releases) 
+
 ```gradle
  dependencies {
-    compile 'com.akhgupta:android-easylocation:0.8.0'
+    compile 'com.akhgupta:android-easylocation:1.0.0'
+    compile "com.google.android.gms:play-services-location:x.x.x"
  }
 ```
 
@@ -34,6 +40,7 @@ LocationRequest locationRequest = new LocationRequest()
 ```java
 EasyLocationRequest easyLocationRequest = new EasyLocationRequestBuilder()
         .setLocationRequest(locationRequest)
+        .setFallBackToLastLocationTime(3000)
         .build();
 }
 ```

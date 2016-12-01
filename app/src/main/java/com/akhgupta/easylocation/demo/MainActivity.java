@@ -69,6 +69,7 @@ public class MainActivity extends EasyLocationAppCompatActivity {
                         .setFastestInterval(5000);
                 EasyLocationRequest easyLocationRequest = new EasyLocationRequestBuilder()
                         .setLocationRequest(locationRequest)
+                        .setFallBackToLastLocationTime(3000)
                         .build();
                 requestSingleLocationFix(easyLocationRequest);
             }
@@ -80,6 +81,7 @@ public class MainActivity extends EasyLocationAppCompatActivity {
                         .setFastestInterval(5000);
                 EasyLocationRequest easyLocationRequest = new EasyLocationRequestBuilder()
                         .setLocationRequest(locationRequest)
+                        .setFallBackToLastLocationTime(3000)
                         .build();
                 requestLocationUpdates(easyLocationRequest);
             }

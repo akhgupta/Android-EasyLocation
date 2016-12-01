@@ -13,8 +13,9 @@ public class EasyLocationRequest {
      final String locationPermissionDialogMessage;
      final String locationPermissionDialogPositiveButtonText;
      final String locationPermissionDialogNegativeButtonText;
+     final long fallBackToLastLocationTime;
 
-    EasyLocationRequest(LocationRequest locationRequest, String locationSettingsDialogTitle, String locationSettingsDialogMessage, String locationSettingsDialogPositiveButtonText, String locationSettingsDialogNegativeButtonText, String locationPermissionDialogTitle, String locationPermissionDialogMessage, String locationPermissionDialogPositiveButtonText, String locationPermissionDialogNegativeButtonText) {
+    public EasyLocationRequest(LocationRequest locationRequest, String locationSettingsDialogTitle, String locationSettingsDialogMessage, String locationSettingsDialogPositiveButtonText, String locationSettingsDialogNegativeButtonText, String locationPermissionDialogTitle, String locationPermissionDialogMessage, String locationPermissionDialogPositiveButtonText, String locationPermissionDialogNegativeButtonText, long fallBackToLastLocationTime) {
         this.locationRequest = locationRequest;
         this.locationSettingsDialogTitle = locationSettingsDialogTitle;
         this.locationSettingsDialogMessage = locationSettingsDialogMessage;
@@ -24,5 +25,6 @@ public class EasyLocationRequest {
         this.locationPermissionDialogMessage = locationPermissionDialogMessage;
         this.locationPermissionDialogPositiveButtonText = locationPermissionDialogPositiveButtonText;
         this.locationPermissionDialogNegativeButtonText = locationPermissionDialogNegativeButtonText;
+        this.fallBackToLastLocationTime = fallBackToLastLocationTime;
     }
 }

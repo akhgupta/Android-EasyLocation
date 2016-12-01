@@ -12,6 +12,7 @@ public class EasyLocationRequestBuilder {
     private String locationPermissionDialogMessage;
     private String locationPermissionDialogPositiveButtonText;
     private String locationPermissionDialogNegativeButtonText;
+    private long fallBackToLastLocationTime;
 
     public EasyLocationRequestBuilder setLocationRequest(LocationRequest locationRequest) {
         this.locationRequest = locationRequest;
@@ -58,7 +59,12 @@ public class EasyLocationRequestBuilder {
         return this;
     }
 
+    public EasyLocationRequestBuilder setFallBackToLastLocationTime(long fallBackToLastLocationTime) {
+        this.fallBackToLastLocationTime = fallBackToLastLocationTime;
+        return this;
+    }
+
     public EasyLocationRequest build() {
-        return new EasyLocationRequest(locationRequest, locationSettingsDialogTitle, locationSettingsDialogMessage, locationSettingsDialogPositiveButtonText, locationSettingsDialogNegativeButtonText, locationPermissionDialogTitle, locationPermissionDialogMessage, locationPermissionDialogPositiveButtonText, locationPermissionDialogNegativeButtonText);
+        return new EasyLocationRequest(locationRequest, locationSettingsDialogTitle, locationSettingsDialogMessage, locationSettingsDialogPositiveButtonText, locationSettingsDialogNegativeButtonText, locationPermissionDialogTitle, locationPermissionDialogMessage, locationPermissionDialogPositiveButtonText, locationPermissionDialogNegativeButtonText, fallBackToLastLocationTime);
     }
 }

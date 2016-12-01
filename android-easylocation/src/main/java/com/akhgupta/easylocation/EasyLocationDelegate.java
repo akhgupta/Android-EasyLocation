@@ -79,7 +79,7 @@ class EasyLocationDelegate {
         this.easyLocationRequest = easyLocationRequest;
     }
 
-    private void startLocationBGService(LocationRequest locationRequest) {
+    private void startLocationBGService(LocationRequest locationRequest, long fallBackToLastLocationTime) {
         if (!isLocationEnabled())
             showLocationServicesRequireDialog();
         else {
@@ -87,6 +87,7 @@ class EasyLocationDelegate {
             intent.setAction(AppConstants.ACTION_LOCATION_FETCH_START);
             intent.putExtra(IntentKey.LOCATION_REQUEST, locationRequest);
             intent.putExtra(IntentKey.LOCATION_FETCH_MODE, mLocationFetchMode);
+            intent.putExtra(IntentKey.FALLBACK_TO_LAST_LOCATION_TIME, fallBackToLastLocationTime);
             activity.startService(intent);
         }
     }
@@ -163,7 +164,7 @@ class EasyLocationDelegate {
             else
                 requestPermission();
         } else
-            startLocationBGService(locationRequest);
+            startLocationBGService(locationRequest,easyLocationRequest.fallBackToLastLocationTime);
     }
 
     private void unregisterLocationBroadcastReceiver() {
