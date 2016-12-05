@@ -21,7 +21,7 @@ In your `build.gradle`:
 
 ```gradle
  dependencies {
-    compile 'com.akhgupta:android-easylocation:1.0.0'
+    compile 'com.akhgupta:android-easylocation:1.0.1'
     compile "com.google.android.gms:play-services-location:x.x.x"
  }
 ```
