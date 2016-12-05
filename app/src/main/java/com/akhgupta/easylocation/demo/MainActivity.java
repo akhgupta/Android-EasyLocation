@@ -21,6 +21,8 @@ public class MainActivity extends EasyLocationAppCompatActivity {
     Button requestSingleLocationButton;
     @BindView(R.id.requestLocationUpdatesButton)
     Button requestLocationUpdatesButton;
+    @BindView(R.id.stopLocationUpdatesButton)
+    Button stopLocationUpdatesButton;
     private Unbinder unbinder;
 
     @Override
@@ -59,7 +61,7 @@ public class MainActivity extends EasyLocationAppCompatActivity {
         showToast("Location services are still Off");
     }
 
-    @OnClick({R.id.requestSingleLocationButton, R.id.requestLocationUpdatesButton})
+    @OnClick({R.id.requestSingleLocationButton, R.id.requestLocationUpdatesButton, R.id.stopLocationUpdatesButton})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.requestSingleLocationButton: {
@@ -86,6 +88,9 @@ public class MainActivity extends EasyLocationAppCompatActivity {
                 requestLocationUpdates(easyLocationRequest);
             }
             break;
+            case R.id.stopLocationUpdatesButton:
+                stopLocationUpdates();
+                break;
         }
     }
 

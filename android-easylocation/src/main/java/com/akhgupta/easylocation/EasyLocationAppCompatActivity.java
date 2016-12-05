@@ -47,4 +47,8 @@ public abstract class EasyLocationAppCompatActivity extends AppCompatActivity im
     protected void requestSingleLocationFix(EasyLocationRequest easyLocationRequest) {
         easyLocationDelegate.requestSingleLocationFix(easyLocationRequest);
     }
+
+    protected void stopLocationUpdates() {
+        easyLocationDelegate.stopLocationUpdates();
+    }
 }

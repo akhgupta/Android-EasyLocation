@@ -2,4 +2,5 @@
     <string name="app_name">EasyLocation-Demo</string>
     <string name="request_single_location_fix">Request Single Location fix</string>
     <string name="request_continuous_location_updates">Request Continuous Location updates</string>
+    <string name="stop_location_updates">Stop Location updates</string>
 </resources>

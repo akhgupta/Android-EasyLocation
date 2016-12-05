@@ -64,7 +64,7 @@ class EasyLocationDelegate {
         activity.startActivityForResult(intent, ENABLE_LOCATION_SERVICES_REQUEST);
     }
 
-    private void stopLocationUpdates() {
+    void stopLocationUpdates() {
         Intent intent = new Intent(activity, LocationBgService.class);
         intent.setAction(AppConstants.ACTION_LOCATION_FETCH_STOP);
         activity.startService(intent);

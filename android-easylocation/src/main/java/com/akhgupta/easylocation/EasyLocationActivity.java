@@ -47,4 +47,8 @@ public abstract class EasyLocationActivity extends Activity implements EasyLocat
     protected void requestSingleLocationFix(EasyLocationRequest easyLocationRequest) {
         easyLocationDelegate.requestSingleLocationFix(easyLocationRequest);
     }
+
+    protected void stopLocationUpdates() {
+        easyLocationDelegate.stopLocationUpdates();
+    }
 }
