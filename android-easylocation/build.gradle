@@ -12,7 +12,7 @@ ext {
     siteUrl = 'https://github.com/akhgupta/Android-EasyLocation'
     gitUrl = 'https://github.com/akhgupta/Android-EasyLocation.git'
 
-    libraryVersion = '1.0.0'
+    libraryVersion = '1.0.1'
 
     developerId = 'akhgupta'
     developerName = 'Akhil Gupta'
@@ -31,7 +31,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1
-        versionName "1.0.0"
+        versionName "1.0.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
