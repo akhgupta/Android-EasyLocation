@@ -18,7 +18,6 @@ public abstract class EasyLocationActivity extends Activity implements EasyLocat
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         easyLocationDelegate = new EasyLocationDelegate(this,this);
-        easyLocationDelegate.onCreate();
     }
 
     @Override

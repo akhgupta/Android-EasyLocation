@@ -5,18 +5,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 
-class LocationBroadcastReceiver extends BroadcastReceiver {
-    private final EasyLocationListener easyLocationListener;
-
-    public LocationBroadcastReceiver(EasyLocationListener easyLocationListener) {
-        this.easyLocationListener = easyLocationListener;
-    }
+public abstract class LocationBroadcastReceiver extends BroadcastReceiver {
+    public abstract void onLocationReceived(Location location);
 
     @Override
     public void onReceive(Context context, Intent intent) {
         if (intent.getAction().equals(AppConstants.INTENT_LOCATION_RECEIVED)) {
             Location location = intent.getParcelableExtra(IntentKey.LOCATION);
-            easyLocationListener.onLocationReceived(location);
+            onLocationReceived(location);
         }
     }
+
 }

@@ -1,6 +1,6 @@
 # Android-EasyLocation
 
-Getting location updates requires lots of bolierplate code in Android, You need to take care of 
+Getting location updates requires lots of bolierplate code in Android, You need to take care of
 - Google Play services availablity Check, Update Google play Service Dialog
 - Creation of GoogleApiClient and its callbacks connected,disconnected etc.
 - Stopping and releasing resources for location updates
@@ -17,7 +17,7 @@ In your `build.gradle`:
 
 **com.google.android.gms:play-services-location** dependency also needs to be added like this
 
-**x.x.x** can be replaced with google play service version your app is using [versions information available here](https://developers.google.com/android/guides/releases) 
+**x.x.x** can be replaced with google play service version your app is using [versions information available here](https://developers.google.com/android/guides/releases)
 
 ```gradle
  dependencies {
@@ -26,7 +26,8 @@ In your `build.gradle`:
  }
 ```
 
-Extend your `Activity` from `EasyLocationAppCompatActivity` or `EasyLocationActivity`:
+Extend your `Activity` from `EasyLocationAppCompatActivity` or `EasyLocationActivity`:  
+(to run without an `Activity`, see below)
 
 *Create location request according to your needs*
 
@@ -93,6 +94,61 @@ EasyLocationRequest easyLocationRequest = new EasyLocationRequestBuilder()
 .setLocationSettingsDialogPositiveButtonText(getString(R.string.yes))
 .build();
 ```
+
+## Running Without `Activity`
+
+If you want to use this library in a `Service` or the similar, you may not have an `Activity` to use. In that case, you can use this library as follows.
+
+First, you'll want to load the EasyLocationClientFactoryLoader, like so:
+```java
+EasyLocationClientFactoryLoader clientFactoryLoader = new EasyLocationClientFactoryLoader() {
+    @Override
+    public void onLocationProviderRequired() {
+        // Neither GPS nor Network location providers are available
+    }
+
+    @Override
+    public void onLocationPermissionRequired() {
+        // The user hasn't provided the app with the ACCESS_FINE_LOCATION permission
+    }
+
+    @Override
+    public void onGooglePlayServicesRequired() {
+        // Google Play Services is unavailable
+    }
+
+    @Override
+    public void onLoad(EasyLocationClientFactory clientFactory) {
+        // Everything went fine - you now have access to a ClientFactory.
+        // Perhaps assign it to an instance variable of your service or something:
+        easyLocationClientFactory = clientFactory;
+    }
+};
+```
+
+Now you just have to use this loader in a call to `EasyLocationClientFactory.load`:
+
+```java
+EasyLocationClientFactory.load(this, clientFactoryLoader);
+```
+
+**Note:** When `load` is called, your loader will execute one of the four above methods. If it's not `onLoad`, then your loader will call one of the others to alert you of why it couldn't load for you. It's up to you to call `.load` again once you resolve whatever issue it alerts you of.
+
+Now that you have a `EasyLocationClientFactory`, you can create clients and have them start listening for locations. (In order to do this, you'll need an `EasyLocationRequest` - *see above*):
+
+```java
+easyLocationClientFactory
+.getContinuousUpdatesClient(easyLocationRequest)
+.listen(new LocationBroadcastReceiver() {
+    @Override
+    public void onLocationReceived(Location location) {
+        // do something with the location
+    }
+});
+```
+
+**Note:** If you only need a single update, use the `getSingleFixClient` method instead.
+
 
 ## License
 

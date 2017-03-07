@@ -18,7 +18,6 @@ public abstract class EasyLocationAppCompatActivity extends AppCompatActivity im
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         easyLocationDelegate = new EasyLocationDelegate(this,this);
-        easyLocationDelegate.onCreate();
     }
 
     @Override
