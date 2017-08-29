@@ -174,6 +174,8 @@ class EasyLocationDelegate {
     private void registerLocationBroadcastReceiver() {
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction(AppConstants.INTENT_LOCATION_RECEIVED);
+        intentFilter.addAction(AppConstants.INTENT_NO_LOCATION_RECEIVED);
+
         LocalBroadcastManager.getInstance(activity).registerReceiver(locationReceiver, intentFilter);
     }
 
