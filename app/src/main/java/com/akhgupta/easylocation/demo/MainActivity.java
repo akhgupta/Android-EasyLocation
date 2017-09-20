@@ -52,6 +52,11 @@ public class MainActivity extends EasyLocationAppCompatActivity {
     }
 
     @Override
+    public void noLocationReceived() {
+        showToast("No location received");
+    }
+
+    @Override
     public void onLocationProviderEnabled() {
         showToast("Location services are now ON");
     }

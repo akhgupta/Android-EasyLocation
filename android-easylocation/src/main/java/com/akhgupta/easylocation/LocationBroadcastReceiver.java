@@ -17,6 +17,8 @@ class LocationBroadcastReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(AppConstants.INTENT_LOCATION_RECEIVED)) {
             Location location = intent.getParcelableExtra(IntentKey.LOCATION);
             easyLocationListener.onLocationReceived(location);
+        } else if (AppConstants.INTENT_NO_LOCATION_RECEIVED.equals(intent.getAction())) {
+            easyLocationListener.noLocationReceived();
         }
     }
 }

@@ -130,6 +130,10 @@ public class LocationBgService extends Service implements GoogleApiClient.Connec
             intent.setAction(AppConstants.INTENT_LOCATION_RECEIVED);
             intent.putExtra(IntentKey.LOCATION,location);
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
+        } else {
+            Intent intent = new Intent();
+            intent.setAction(AppConstants.INTENT_NO_LOCATION_RECEIVED);
+            LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         }
         if(mLocationMode == AppConstants.SINGLE_FIX)
             stopLocationService();
