@@ -2,12 +2,13 @@ apply plugin: 'com.android.application'
 
 //noinspection GroovyMissingReturnStatement,GroovyMissingReturnStatement
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.3"
+    compileSdkVersion rootProject.ext.compile_sdk_version
+    buildToolsVersion rootProject.ext.build_tools_version
+
     defaultConfig {
         applicationId "com.akhgupta.easylocation.demo"
-        minSdkVersion 15
-        targetSdkVersion 24
+        minSdkVersion rootProject.ext.min_sdk_version
+        targetSdkVersion rootProject.ext.target_sdk_version
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
